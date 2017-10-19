@@ -5,13 +5,13 @@ export default class IndexPageLayout extends React.Component {
     return (
       <div>
         <div>
-          {props.children[0]}
+          {this.props.children[0]}
         </div>
         <div>
-          {props.children[1]}
+          {this.props.children[1]}
         </div>
         <div>
-          {props.children[2]}
+          {this.props.children[2]}
         </div>
       </div>
     );
