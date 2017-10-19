@@ -6,21 +6,6 @@ import Navbar from './../components/NavbarComponent';
 import Form from './../components/FormComponent';
 import WidgetComponent from './../components/WidgetComponent';
 
-let widget = {
-  title: 'Bitcoin',
-  url:
-    'https://www.worldcoinindex.com/Content/img/coins/v-636096405580774340/Bitcoin.png',
-  percentChange: '2.49%',
-  bitcoinPrice: '0.0003444',
-  usdPrice: '5,789.20',
-  euroPrice: '5,200.30',
-  yuanPrice: '36,558.44',
-  gbpPrice: '4,306.56',
-  rublePrice: '304,273.59',
-  high: '0.0003444',
-  low: '0.0003222'
-};
-
 const arrayOfWidgets = [
   {
     title: 'Bitcoin',
@@ -58,9 +43,8 @@ storiesOf('Layout', module)
     <IndexPageLayout>
       <Navbar />
       <Form />
-      {/* {arrayOfWidgets.map((widget, index) => {
+      {arrayOfWidgets.map((widget, index) => {
         return <WidgetComponent widget={widget} key={index} />;
-      })} */}
-      <WidgetComponent widget={widget} />
+      })}
     </IndexPageLayout>;
   });

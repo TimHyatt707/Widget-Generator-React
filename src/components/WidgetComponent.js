@@ -41,10 +41,10 @@ export default class WidgetComponent extends React.Component {
               {price}
             </p>
             <p>
-              24 Hour High: {widget.high}
+              24 Hour High: Ƀ{widget.high}
             </p>
             <p>
-              24 Hour Low: {widget.low}
+              24 Hour Low: Ƀ{widget.low}
             </p>
           </CardText>
           <CardActions>
