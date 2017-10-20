@@ -1,6 +1,7 @@
-import React from 'react';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import React from "react";
+import TextField from "material-ui/TextField";
+import RaisedButton from "material-ui/RaisedButton";
+import WebScraper from "./WebScraper";
 
 export default class FormComponent extends React.Component {
   constructor(props) {
@@ -12,27 +13,27 @@ export default class FormComponent extends React.Component {
       <form
         onSubmit={this._onSubmit}
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center'
-        }}>
-        <TextField id="input" hintText="Input a URL" />
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
+        <TextField id="input" hintText="Type in a coin" />
         <RaisedButton label="GO" type="Submit" />
-        <h2 style={{ color: 'red' }}>
-          {this.state.error}
-        </h2>
+        <h2 style={{ color: "red" }}>{this.state.error}</h2>
       </form>
     );
   }
 
   _onSubmit = e => {
-    let url = e.target.input.value.trim();
+    let coin = e.target.input.value.trim();
+    let coinScraper = new WebScraper();
     e.preventDefault();
-    if (typeof url !== 'string' || !url) {
-      this.setState({ error: 'Coin does not exist' });
+    if (typeof coin !== "string" || !coin) {
+      this.setState({ error: "Coin does not exist" });
     } else {
       this.setState({ error: null });
-      console.log('Success');
+      this.props.createWidget(coinScraper.scrape(coin));
     }
   };
 }
