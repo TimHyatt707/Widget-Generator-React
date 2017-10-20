@@ -12,20 +12,20 @@ export default class IndexPage extends React.Component {
     };
   }
 
-  createWidget(widget) {
+  createWidget = widget => {
     this.setState(prevState => {
       return {
         ...prevState,
         arrayOfWidgets: [...prevState.arrayOfWidgets, widget]
       };
     });
-  }
+  };
 
   render() {
     return (
       <IndexPageLayout>
         <Navbar />
-        <FormComponent createWidget={createWidget} />
+        <FormComponent createWidget={this.createWidget} />
         {this.state.arrayOfWidgets.map((widget, index) => {
           return <WidgetComponent widget={widget} key={index} />;
         })}

@@ -1,19 +1,19 @@
-import React from 'react';
-import { Card, CardHeader, CardActions, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import { DropDownMenu, MenuItem } from 'material-ui/DropDownMenu';
+import React from "react";
+import { Card, CardHeader, CardActions, CardText } from "material-ui/Card";
+import FlatButton from "material-ui/FlatButton";
+import { DropDownMenu, MenuItem } from "material-ui/DropDownMenu";
 
 export default class WidgetComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { menuValue: 0, symbol: 'Ƀ', price: 0 };
+    this.state = { menuValue: 0, symbol: "Ƀ", price: 0 };
   }
   render() {
     let widget = this.props.widget;
     let price;
     if (
       !widget ||
-      typeof widget !== 'object' ||
+      typeof widget !== "object" ||
       Object.keys(widget).length === 0
     ) {
       return null;
@@ -26,26 +26,16 @@ export default class WidgetComponent extends React.Component {
       return (
         <Card
           style={{
-            maxWidth: 300,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}>
+            width: 200,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}
+        >
           <CardHeader title={widget.title} avatar={widget.url} />
           <CardText>
-            <p>
-              24 Hour change: {widget.percentChange}
-            </p>
-            <p>
-              Price: {this.state.symbol}
-              {price}
-            </p>
-            <p>
-              24 Hour High: Ƀ{widget.high}
-            </p>
-            <p>
-              24 Hour Low: Ƀ{widget.low}
-            </p>
+            <p>24 Hour change: {widget.percentChange}</p>
+            <p>Price: {price}</p>
           </CardText>
           <CardActions>
             <FlatButton label="Update" />
@@ -53,7 +43,8 @@ export default class WidgetComponent extends React.Component {
             <form>
               <DropDownMenu
                 value={this.state.menuValue}
-                onChange={this._handleChange}>
+                onChange={this._handleChange}
+              >
                 <MenuItem value={0} primaryText="Bitcoin" />
                 <MenuItem value={1} primaryText="USD" />
                 <MenuItem value={2} primaryText="Euro" />
@@ -73,27 +64,27 @@ export default class WidgetComponent extends React.Component {
     let price;
     switch (value) {
       case 1:
-        symbol = '$';
+        symbol = "$";
         price = this.props.widget.usdPrice;
         break;
       case 2:
-        symbol = '€';
+        symbol = "€";
         price = this.props.widget.euroPrice;
         break;
       case 3:
-        symbol = '£';
+        symbol = "£";
         price = this.props.widget.gbpPrice;
         break;
       case 4:
-        symbol = '¥';
+        symbol = "¥";
         price = this.props.widget.yuanPrice;
         break;
       case 5:
-        symbol = '₽';
+        symbol = "₽";
         price = this.props.widget.rublePrice;
         break;
       default:
-        symbol = 'Ƀ';
+        symbol = "Ƀ";
         price = this.props.widget.bitcoinPrice;
         break;
     }

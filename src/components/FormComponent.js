@@ -26,14 +26,19 @@ export default class FormComponent extends React.Component {
   }
 
   _onSubmit = e => {
-    let coin = e.target.input.value.trim();
+    let coin = e.target.input.value.trim().toLowerCase();
     let coinScraper = new WebScraper();
     e.preventDefault();
     if (typeof coin !== "string" || !coin) {
-      this.setState({ error: "Coin does not exist" });
+      this.setState({ error: "INVALID INPUT" });
     } else {
       this.setState({ error: null });
-      this.props.createWidget(coinScraper.scrape(coin));
+      return coinScraper
+        .scrape(coin)
+        .then(result => {
+          return this.props.createWidget(result);
+        })
+        .catch(() => this.setState({ error: "Coin does not exist" }));
     }
   };
 }
