@@ -1,5 +1,7 @@
+import uuidv1 from "uuid/v1";
+
 class WebScraper {
-  scrape(coin) {
+  scrape(coin, widget) {
     return fetch(
       `http://cors-anywhere.herokuapp.com/https://coinmarketcap.com/currencies/${coin}`
     )
@@ -9,14 +11,14 @@ class WebScraper {
       .then(response => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(response, "text/html");
-        return this.scraper(doc, coin);
+        return this.scraper(doc, coin, widget);
       })
       .then(widget => {
         return widget;
       });
     // .catch(err => "foo");
   }
-  scraper(document, coin) {
+  scraper(document, coin, widget) {
     const cryptocurrency = {
       title: "",
       url: "",
@@ -24,6 +26,9 @@ class WebScraper {
       bitcoinPrice: 0,
       usdPrice: 0
     };
+    if (!widget) {
+      cryptocurrency.id = uuidv1();
+    }
     cryptocurrency.title = coin;
     cryptocurrency.url = `https://files.coinmarketcap.com/static/img/coins/32x32/${coin}.png`;
     //This IF statement exists due to the way positive and negative change is displayed on the webpage

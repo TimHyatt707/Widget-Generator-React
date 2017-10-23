@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-import WebScraper from "./WebScraper";
+import WebScraper from "./../scrapers/WebScraper";
 
 export default class FormComponent extends React.Component {
   constructor(props) {

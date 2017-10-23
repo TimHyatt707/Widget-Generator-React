@@ -21,6 +21,28 @@ export default class IndexPage extends React.Component {
     });
   };
 
+  updateWidget = (id, updatedWidget) => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        arrayOfWidgets: prevState.arrayOfWidgets.map(widget => {
+          return widget.id === id ? updatedWidget : widget;
+        })
+      };
+    });
+  };
+
+  deleteWidget = id => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        arrayOfWidgets: prevState.arrayOfWidgets.filter(widget => {
+          return widget.id !== id;
+        })
+      };
+    });
+  };
+
   render() {
     return (
       <IndexPageLayout>

@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardHeader, CardActions, CardText } from "material-ui/Card";
 import FlatButton from "material-ui/FlatButton";
 import { DropDownMenu, MenuItem } from "material-ui/DropDownMenu";
+import WebScraper from "./../scrapers/WebScraper";
 
 export default class WidgetComponent extends React.Component {
   constructor(props) {
@@ -38,8 +39,14 @@ export default class WidgetComponent extends React.Component {
             <p>Price: {price}</p>
           </CardText>
           <CardActions>
-            <FlatButton label="Update" />
-            <FlatButton label="Remove" />
+            <FlatButton
+              label="Update"
+              onClick={this._handleUpdate(widget.id, widget)}
+            />
+            <FlatButton
+              label="Remove"
+              onClick={this._handleDelete(widget.id)}
+            />
             <form>
               <DropDownMenu
                 value={this.state.menuValue}
@@ -89,5 +96,13 @@ export default class WidgetComponent extends React.Component {
         break;
     }
     this.setState({ menuValue: value, symbol, price });
+  };
+
+  _handleUpdate = (id, widget) => {
+    return this.props.updateWidget(id, WebScraper.scrape(widget.title));
+  };
+
+  _handleDelete = id => {
+    return this.props.deleteWidget(id);
   };
 }
