@@ -1,5 +1,5 @@
 # React Cryptocurrency Widget Generator
-A simple widget generator built in react to build cryptocurrency widgets. All you need to build a widget is simply input the name of a cryptocurrency into the text field and the application will fetch the data for it from worldcoinindex.com and build a widget for you. This project was mainly built so I can practice using the fetch API and web scraping techniques.
+A simple widget generator built in react to build cryptocurrency widgets. All you need to do to build a widget is simply input the name of a cryptocurrency into the text field and the application will fetch the data for it from worldcoinindex.com and build a widget for you. This project was mainly built so I can practice using the fetch API and web scraping techniques.
 ## How to use
 - Input the name of a crypto (it's case insensitive)
 - A widget will appear on the screen
